@@ -16,13 +16,18 @@ class Workout {
         </div>`
     }
 
-    static renderIndex(){
+    static handleClick = (e) => {
+       console.log(e.target) 
+    }
+
+    static renderIndex = () => {
         const workoutContainer = document.createElement("div")
         workoutContainer.id="workout-container"
         document.getElementById("main").appendChild(workoutContainer)
         this.all.forEach(workout => workout.renderWorkout())
+        workoutContainer.addEventListener("click", this.handleClick)
     }
-    static getWorkouts(){
+    static getWorkouts = () => {
         api.getWorkouts().then(workouts => {
             workouts.forEach(workout => new Workout(workout))
             this.renderIndex()
