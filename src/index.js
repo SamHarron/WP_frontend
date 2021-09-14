@@ -1,3 +1,3 @@
-console.log("Workout Planner 2021")
+const api = new ApiService("http://localhost:3000")
 
-fetch("http://localhost:3000/workouts").then(res => res.json()).then(console.log)
+api.getWorkouts().then(console.log)
