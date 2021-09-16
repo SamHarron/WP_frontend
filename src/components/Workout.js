@@ -6,18 +6,26 @@ class Workout {
         this.constructor.all.push(this)
     }
 
+    renderShow = () => {
+        console.log(this)
+    }
     renderWorkout = () => {
-        const { title, date, message} = this.workout
+        const { title, date, message, id} = this.workout
         document.getElementById("workout-container").innerHTML += `
-        <div class="workout-card">
+        <div class="workout-card" data-id=${id}>
          <p class="title">${title}
          <p class="date">${date}
          <p class="message">${message}
         </div>`
     }
 
+    static find = (id) => this.all.find(workout => workout.workout.id == id)
+
     static handleClick = (e) => {
-       console.log(e.target) 
+       if (e.target.classList.contains("title") || e.target.classList.contains("date")){
+       const id = e.target.closest(".workout-card").dataset.id
+       this.find(id).renderShow()
+       }
     }
 
     static renderIndex = () => {
