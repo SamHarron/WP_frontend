@@ -7,8 +7,14 @@ class Workout {
     }
 
     renderShow = () => {
-        console.log(this)
+        const { title, date, message } = this.workout
+        document.getElementById("main").innerHTML = `
+        <div class="workout-show" >
+        <p class="title">${title}
+        <p class="date">${date}
+        </div>`
     }
+    
     renderWorkout = () => {
         const { title, date, message, id} = this.workout
         document.getElementById("workout-container").innerHTML += `
