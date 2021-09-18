@@ -12,7 +12,9 @@ class Workout {
         <div class="workout-show" >
         <p class="title">${title}
         <p class="date">${date}
-        </div>`
+        </div>
+        <button id="back"> << Back </button>`
+        document.getElementById("back").addEventListener("click", Workout.renderIndex)
     }
     
     renderWorkout = () => {
@@ -27,25 +29,31 @@ class Workout {
 
     static find = (id) => this.all.find(workout => workout.workout.id == id)
 
-    static handleClick = (e) => {
-       if (e.target.classList.contains("title") || e.target.classList.contains("date")){
-       const id = e.target.closest(".workout-card").dataset.id
-       this.find(id).renderShow()
-       }
-    }
+
 
     static renderIndex = () => {
+
+        const main = document.getElementById("main")
+        main.innerHTML = ""
         const workoutContainer = document.createElement("div")
         workoutContainer.id="workout-container"
-        document.getElementById("main").appendChild(workoutContainer)
+        main.appendChild(workoutContainer)
         this.all.forEach(workout => workout.renderWorkout())
         workoutContainer.addEventListener("click", this.handleClick)
     }
+    
     static getWorkouts = () => {
         api.getWorkouts().then(workouts => {
             workouts.forEach(workout => new Workout(workout))
             this.renderIndex()
         })
+    }    
+    
+    static handleClick = (e) => {
+       if (e.target.classList.contains("title") || e.target.classList.contains("date")){
+       const id = e.target.closest(".workout-card").dataset.id
+       this.find(id).renderShow()
+       }
     }
 }
 
