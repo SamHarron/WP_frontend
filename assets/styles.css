@@ -1,26 +1,52 @@
 body {
+
   background-color: #36625e;
   color: #adc2c4;
   text-align: center;
   font-size: 50;
 }
 
-#workout-container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.workout-card {
-  flex-wrap: wrap;
+.workout-card {  
+  margin: auto;
+  display: flex;
+  align-items: center;
   border: 3px solid black;
   border-radius: 1em;
+  max-width: fit-content;
+  margin-bottom: 1em; 
 }
 
-p {
-  font-size: xx-large;
+.title {
+  font-size: .85em;
+  color: #adc2c4;
+  cursor: pointer;
+  text-decoration: underline;
+  padding-inline: 1em;
 }
+
+.date {
+  font-size: .65em;
+  color: #adc2c4;
+  cursor: pointer;
+  text-decoration: underline;
+  padding-inline: 1em;
+}
+
+.message {
+  font-size: .55em;
+  color: rgb(0, 0, 0);
+  font-style: italic;
+  padding-inline: 1em;
+
+}
+
+
 
 /*https://www.w3schools.com/howto/howto_css_modals.asp*/
 
@@ -40,16 +66,16 @@ p {
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #adc2c4;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #adc2c4;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
 .close {
-  color: #aaa;
+  color: black;
   float: right;
   font-size: 28px;
   font-weight: bold;
