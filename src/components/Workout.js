@@ -27,6 +27,16 @@ class Workout {
         </div>`
     }
 
+    static submitEvent = (e) => {
+        e.preventDefault()
+        const newWorkout = {
+            title: e.target.title.value,
+            date: e.target.date.value,
+            message: e.target.message.value
+        }
+        api.createWorkout(newWorkout).then(console.log)
+    }
+
     static workoutForm = () => {
         modal.main.innerHTML += `
         <h3> Add A New Workout </h3>
@@ -39,6 +49,7 @@ class Workout {
         <input type="text" name="message"><br>
         <input type="submit" value="Submit"><br>
         </form>`
+        modal.main.querySelector("form").addEventListener("submit", this.submitEvent)
         modal.open()
     }
 
