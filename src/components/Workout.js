@@ -34,11 +34,15 @@ class Workout {
             date: e.target.date.value,
             message: e.target.message.value
         }
-        api.createWorkout(newWorkout).then(console.log)
+        api.createWorkout(newWorkout).then(workout => {
+            new Workout(workout).renderWorkout()
+        })
+        modal.close()
+        e.target.reset()
     }
 
     static workoutForm = () => {
-        modal.main.innerHTML += `
+        modal.main.innerHTML = `
         <h3> Add A New Workout </h3>
         <form>
         <label for="title">Title:</label><br>
