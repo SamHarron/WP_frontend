@@ -36,8 +36,11 @@ class Workout {
         const main = document.getElementById("main")
         main.innerHTML = ""
         const workoutContainer = document.createElement("div")
+        const addWorkout = document.createElement("button")
+        addWorkout.innerText = "Add a New Workout"
+        addWorkout.addEventListener("click", modal.open )
         workoutContainer.id="workout-container"
-        main.appendChild(workoutContainer)
+        main.append(addWorkout, workoutContainer)
         this.all.forEach(workout => workout.renderWorkout())
         workoutContainer.addEventListener("click", this.handleClick)
     }
