@@ -27,9 +27,22 @@ class Workout {
         </div>`
     }
 
+    static workoutForm = () => {
+        modal.main.innerHTML += `
+        <h3> Add A New Workout </h3>
+        <form>
+        <label for="title">Title:</label><br>
+        <input type="text" name="title"><br>
+        <label for="date">Date:</label><br>
+        <input type="text" name="date"><br>      
+        <label for="message">Message:</label><br>
+        <input type="text" name="message"><br>
+        <input type="submit" value="Submit"><br>
+        </form>`
+        modal.open()
+    }
+
     static find = (id) => this.all.find(workout => workout.workout.id == id)
-
-
 
     static renderIndex = () => {
 
@@ -38,7 +51,7 @@ class Workout {
         const workoutContainer = document.createElement("div")
         const addWorkout = document.createElement("button")
         addWorkout.innerText = "Add a New Workout"
-        addWorkout.addEventListener("click", modal.open )
+        addWorkout.addEventListener("click", this.workoutForm )
         workoutContainer.id="workout-container"
         main.append(addWorkout, workoutContainer)
         this.all.forEach(workout => workout.renderWorkout())
