@@ -3,6 +3,7 @@ class Workout {
     static all = []
     constructor(data){
         this.workout = data
+        this.exercises = this.workout.exercises.map(exercise => new Exercise(exercise))
         this.constructor.all.push(this)
     }
 
@@ -12,9 +13,11 @@ class Workout {
         <div class="workout-show" >
         <p class="title">${title}
         <p class="date">${date}
+        <div class="container"></div>
         </div>
         <button id="back"> << Back </button>`
         document.getElementById("back").addEventListener("click", Workout.renderIndex)
+        this.exercises.forEach(exercise => exercise.render())
     }
     
     renderWorkout = () => {
