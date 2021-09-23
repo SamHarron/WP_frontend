@@ -11,12 +11,16 @@ class Workout {
         const { title, date, message } = this.workout
         document.getElementById("main").innerHTML = `
         <div class="workout-show" >
+        <button id="newExercise"> Add An Exercise </button>
+        <button id="back"> << Back </button>
         <p class="title">${title}
         <p class="date">${date}
+        <p class="message">${message}
         <div class="container"></div>
         </div>
         <button id="back"> << Back </button>`
         document.getElementById("back").addEventListener("click", Workout.renderIndex)
+        document.getElementById("newExercise").addEventListener("click", Workout.exerciseForm)
         this.exercises.forEach(exercise => exercise.render())
     }
     
@@ -54,6 +58,26 @@ class Workout {
         <input type="text" name="date"><br>      
         <label for="message">Message:</label><br>
         <input type="text" name="message"><br>
+        <input type="submit" value="Submit"><br>
+        </form>`
+        modal.main.querySelector("form").addEventListener("submit", this.submitEvent)
+        modal.open()
+    }
+
+    static exerciseForm = () => {
+        modal.main.innerHTML = `
+        <h3> Add A New Exercise </h3>
+        <form>
+        <label for="title">Title:</label><br>
+        <input type="text" name="title"><br>
+        <label for="reps">Reps:</label><br>
+        <input type="text" name="reps"><br>      
+        <label for="sets">Sets:</label><br>
+        <input type="text" name="sets"><br>
+        <label for="description">Description:</label><br>
+        <input type="text" name="description"><br>
+        <label for="image">Image URL:</label><br>
+        <input type="text" name="image"><br>
         <input type="submit" value="Submit"><br>
         </form>`
         modal.main.querySelector("form").addEventListener("submit", this.submitEvent)
