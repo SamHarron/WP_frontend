@@ -7,7 +7,7 @@ class Exercise {
     render = () => {
         const { title, reps, sets, description, image } = this.workout
         document.querySelector(".container").innerHTML += `
-        <div class="card">
+        <div class="card"> <br>
             <h1>${title}</h1>
             <img src=${image} alt=${title}/>
             <p> Reps: ${reps}, Sets: ${sets} </p>
