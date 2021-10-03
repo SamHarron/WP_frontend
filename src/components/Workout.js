@@ -18,9 +18,11 @@ class Workout {
         <p class="message">${message}
         <div class="container"></div>
         </div>
-        <button id="back"> << Back </button>`
+        <button id="back2"> << Back </button>`
         document.getElementById("back").addEventListener("click", Workout.renderIndex)
         document.getElementById("newExercise").addEventListener("click", Workout.exerciseForm)
+        document.getElementById("back2").addEventListener("click", Workout.renderIndex)
+
         this.exercises.forEach(exercise => exercise.render())
     }
     
@@ -80,7 +82,7 @@ class Workout {
         <input type="text" name="image"><br>
         <input type="submit" value="Submit"><br>
         </form>`
-        modal.main.querySelector("form").addEventListener("submit", this.submitEvent)
+        modal.main.querySelector("form").addEventListener("submit", Exercise.submitExercise)
         modal.open()
     }
 
